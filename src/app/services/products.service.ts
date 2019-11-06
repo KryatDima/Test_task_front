@@ -11,10 +11,17 @@ export class ProductsService {
   constructor(private http: HttpClient) { }
 
   getById(id: number | string): Observable<Product> {
-    return this.http.get<Product>(AppConfig.product + id);
+    return this.http.get<Product>("https://localhost:44395/api/product/" + id);
   }
   
   getList(): Observable<ProductList[]> {
-    return this.http.get<ProductList[]>(AppConfig.productList);
+    return this.http.get<ProductList[]>("https://localhost:44395/api/product");
   }
+
+//   addProduct(product: Product){
+//       return this.http.post(AppConfig.addProduct,{
+//             title: product.title,
+//             category: product.category
+//       })
+//   } 
 }

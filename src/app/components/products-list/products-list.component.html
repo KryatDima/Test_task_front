@@ -1,1 +1,19 @@
 <p>products-list works!</p>
+<div class="content-wrapper">
+    <h2>Top Rated Movies</h2>
+    <table class="table">
+        <thead>
+            <tr>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let movie of top$ | async">
+
+                <td><a class="card-title" [routerLink]="[ '/product', product.id ]">
+              {{product.title}} ({{product.category.title}})</a></td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
