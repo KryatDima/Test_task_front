@@ -12,14 +12,14 @@ import { Observable } from 'rxjs';
   styleUrls: ['./products-list.component.css']
 })
 export class ProductsListComponent implements OnInit {
-  top$: Observable<ProductList[]>;
+  list$: Observable<ProductList[]>;
   constructor(
     private service: ProductsService,
     private router: Router
   ) { }
 
   ngOnInit() {
-    this.top$ = this.service.getList();
+    this.list$ = this.service.getList();
   }
 
   gotoProduct(product: ProductList) {

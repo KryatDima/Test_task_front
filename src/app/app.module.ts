@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductComponent } from './components/product/product.component';
 import { CategoryComponent } from './components/category/category.component';
+import { ProductsService } from './services/products.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { CategoryComponent } from './components/category/category.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    ProductsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
