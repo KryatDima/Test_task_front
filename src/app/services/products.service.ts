@@ -18,10 +18,10 @@ export class ProductsService {
     return this.http.get<ProductList[]>("https://localhost:44395/api/product");
   }
 
-//   addProduct(product: Product){
-//       return this.http.post(AppConfig.addProduct,{
-//             title: product.title,
-//             category: product.category
-//       })
-//   } 
+  addProduct(product: Product){
+      return this.http.post(AppConfig.createProduct,{
+            title: product.title,
+            category: product.category
+      })
+  } 
 }

@@ -1,10 +1,6 @@
 <p>products-list works!</p>
-<div>
-    <a class="card-title" [routerLink]="[ '/movie', movie.id ]">
-            {{products-list.title}} ({{product.title}})</a>
-</div>
-<div *ngFor="let product of top$ | async">
-    <td><a class="card-title" [routerLink]="[ '/product', product.id ]">
-        {{product.title}} ({{product.category.title}})</a></td>
-    <td>{{movie.averageRate}}</td>
+<div *ngFor="let product of list$ | async">
+    <td>
+        {{product.title}} {{product.category.title}}
+    </td>
 </div>
