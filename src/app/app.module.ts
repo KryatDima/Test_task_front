@@ -10,7 +10,7 @@ import { ProductComponent } from './components/product/product.component';
 import { CategoryComponent } from './components/category/category.component';
 import { ProductsService } from './services/products.service';
 import { AddProductComponent } from './components/add-product/add-product.component';
-
+import { CategoryService } from './services/categories.service'
 
 @NgModule({
   declarations: [
@@ -28,7 +28,8 @@ import { AddProductComponent } from './components/add-product/add-product.compon
     AppRoutingModule
   ],
   providers: [
-    ProductsService
+    ProductsService,
+    CategoryService
   ],
   bootstrap: [AppComponent]
 })
