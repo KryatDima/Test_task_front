@@ -46,7 +46,7 @@ export class AddProductComponent implements OnInit {
     }
 
     this.loading = true;
-    this.productsService.addProduct(this.f.product.value)
+    this.productsService.addProduct(this.addForm.value)
       .pipe(first())
       .subscribe(
         data => {
