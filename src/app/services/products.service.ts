@@ -4,6 +4,7 @@ import { Product } from '../models/product.model';
 import { AppConfig } from '../config/config';
 import { Observable } from 'rxjs';
 import { ProductList } from '../models/product-list.model';
+import { AddP } from '../models/add-p.model';
 
 @Injectable()
 export class ProductsService {
@@ -18,10 +19,10 @@ export class ProductsService {
     return this.http.get<ProductList[]>("https://localhost:44395/api/product");
   }
 
-  addProduct(product: Product){
-      return this.http.post(AppConfig.createProduct,{
+  addProduct(product: AddP){
+      return this.http.post("https://localhost:44395/api/product/add",{
             title: product.title,
-            category: product.category
+            categoryId: product.categoryId
       })
   } 
 }

@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { ProductsService } from 'src/app/services/products.service';
-import { Product } from 'src/app/models/product.model';
 import { CategoryList } from 'src/app/models/category-list.model';
 import { Observable } from 'rxjs';
 import { CategoryService } from 'src/app/services/categories.service';
@@ -30,17 +29,19 @@ export class AddProductComponent implements OnInit {
     this.formData$ = this.categoryService.getList();
     this.addForm = this.formBuilder.group({
       title: ['', Validators.required],
-      category: ['',Validators.required]
+      categoryId: ['',Validators.required]
     });
 
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
+  
   get f() { return this.addForm.controls; }
 
   onSubmit(){
     this.submitted = true;
 
+    
     if(this.addForm.invalid) {
       return;
     }
@@ -50,7 +51,7 @@ export class AddProductComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate([this.returnUrl]);
+          this.router.navigate(['/product']);
         },
         error => {
           this.loading = false;

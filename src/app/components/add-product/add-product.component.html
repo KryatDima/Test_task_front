@@ -1,4 +1,3 @@
-<p>add-product works!</p>
 <h2 class="font-weight-bold text-center">Add</h2>
 <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
@@ -11,23 +10,20 @@
     <div *ngIf="formData$ | async as CategoryList">
         <div class="form-group">
             <label>Category</label>
-            <select class="form-control" formControlName="category">
+            <select class="form-control" formControlName="categoryId" [ngClass]="{ 'is-invalid': submitted && f.title.errors }">
                 <option disabled value="">Select category</option>
                 <option *ngFor="let category of CategoryList"
                 [value]="category.id">{{category.title}}</option>
             </select>
+            <div *ngIf="submitted && f.categoryId.errors" class="invalid-feedback">
+                <div *ngIf="f.categoryId.errors.required">Category is required</div>
+            </div>
         </div>
     </div>
-    <!-- <div class="form-group">
-        <label for="Category">Category</label>
-        <input class="form-control" type="category" formControlName="category" [ngClass]="{ 'is-invalid': submitted && f.category.errors }" />
-        <div *ngIf="submitted && f.category.errors" class="invalid-feedback">
-            <div *ngIf="f.category.errors.required">Category is required</div>
-        </div>
-    </div> -->
     <div class="form-group">
-        <button [disabled]="loading" class="btn btn-primary">Ok</button>
+        <button [disabled]="loading" ng-click="reloadRoute()" class="btn btn-primary">Ok</button>
         <img *ngIf="loading" src="" />
+        <p></p>
         <button [routerLink]="['/product']" class="btn btn-primary">Back to products</button>
     </div>
 </form>
